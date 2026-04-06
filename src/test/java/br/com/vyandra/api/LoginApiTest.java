@@ -52,7 +52,7 @@ public class LoginApiTest {
                 .post("/login")
                 .then()
                 .log().all()
-                .statusCode(200) // Login com sucesso retorna 200 OK
-                .body("authorization", notNullValue()); // A Prova Sênior: Valida se o servidor devolveu o Token!
+                .statusCode(200)
+                .body("authorization", notNullValue());
     }
 }

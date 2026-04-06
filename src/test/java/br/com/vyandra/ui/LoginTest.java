@@ -25,11 +25,9 @@ public class LoginTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         Faker faker = new Faker(new Locale("pt", "BR"));
 
-        // Gerando os dados falsos
         String emailDinamico = faker.internet().emailAddress();
         String senhaDinamica = "senhaForte123";
 
-        // 1. Arrange (PREPARAÇÃO SÊNIOR): Criar o usuário via API silenciosamente antes de abrir a tela
         String jsonBody = "{\n" +
                 "  \"nome\": \"" + faker.name().fullName() + "\",\n" +
                 "  \"email\": \"" + emailDinamico + "\",\n" +
@@ -44,13 +42,11 @@ public class LoginTest extends BaseTest {
                 .when()
                 .post("/usuarios")
                 .then()
-                .statusCode(201); // Garante que o banco salvou
+                .statusCode(201);
 
-        // 2. Act: Agora sim, com o usuário no banco, o robô vai pra tela de login
         loginPage.acessarPagina();
         loginPage.realizarLogin(emailDinamico, senhaDinamica);
 
-        // 3. Assert: Valida se entrou no sistema
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         boolean deslogarVisivel = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector("button[data-testid='logout']")

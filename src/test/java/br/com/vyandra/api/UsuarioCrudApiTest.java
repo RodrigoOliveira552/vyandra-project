@@ -11,12 +11,11 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
-// 💡 A Mágica do Sênior: Garante que os testes rodem na ordem exata (1, 2, 3, 4)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UsuarioCrudApiTest {
 
     private static Faker faker;
-    private static String idUsuario; // Guarda o ID gerado para usar nos outros testes
+    private static String idUsuario;
     private static String emailUsuario;
 
     @BeforeAll
