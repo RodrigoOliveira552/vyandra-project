@@ -33,7 +33,7 @@ public class CadastroUsuarioApiTest {
                 "  \"administrador\": \"true\"\n" +
                 "}";
 
-        System.out.println("🚀 Enviando Payload para a API:\n" + jsonBody);
+        System.out.println("Enviando Infos para a API:\n" + jsonBody);
 
         given()
                 .contentType(ContentType.JSON)
